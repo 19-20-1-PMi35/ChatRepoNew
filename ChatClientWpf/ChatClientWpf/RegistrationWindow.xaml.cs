@@ -42,6 +42,7 @@ namespace ChatClientWpf
 
         private void RegisttrationButton_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             if (PasswordBox.Text.Length > 3)
             {
                 if (LoginBox.Text != "" && EmailBox.Text != "")
@@ -58,6 +59,7 @@ namespace ChatClientWpf
                     else
                     {
                         Close();
+                        this.DialogResult = true;
                     }
                 }
                 else

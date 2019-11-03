@@ -53,7 +53,11 @@ namespace ChatClientWpf
             password = PasswordBox.Text = mw.Password;
             email = mw.Email;
             image = mw.Image;
-            c.connect(login, password, email, image);
+            if ((bool)mw.DialogResult)
+            {
+                c.connect(login, password, email, image);
+            }
+            
         }
     }
 }
