@@ -34,7 +34,6 @@ namespace InstantMessengerServer
 
             Listen();
         }
-
         void Listen()  // Listen to incoming connections.
         {
 
@@ -51,6 +50,15 @@ namespace InstantMessengerServer
             {
 
                 db.Users.Add(new User { Login=login, Email=email, Password=password, Image=image});
+                db.SaveChanges();
+            }
+        }
+
+        public void SaveMessage(int idFrom, int idTo, DateTime date, string message)
+        {
+            using (ChatEntities db = new ChatEntities())
+            {
+                db.Messages.Add(new Message { Id_user_from=idFrom, Id_user_to=idTo, Created_at=date, Message1=message });
                 db.SaveChanges();
             }
         }

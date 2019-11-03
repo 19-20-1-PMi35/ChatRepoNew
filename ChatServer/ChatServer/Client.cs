@@ -7,6 +7,7 @@ using System.Net.Security;
 using System.Security.Authentication;
 using System.IO;
 using System.Threading;
+using ChatServer;
 
 namespace InstantMessengerServer
 {
@@ -70,8 +71,22 @@ namespace InstantMessengerServer
             {
                 while (client.Client.Connected)  // While we are connected.
                 {
+                    int idFrom = -1, idTo = -1;
+
                     string to = br.ReadString();
                     string msg = br.ReadString();
+
+                    using (ChatEntities db = new ChatEntities())
+                    {
+                        foreach (var user in db.Users)
+                        {
+                            if (user.Login == currentUser)
+                                idFrom = user.Id;
+
+                            if (user.Login == to)
+                                idTo = user.Id;
+                        }
+                    }
 
                     Client recipient;
                     if (prog.users.TryGetValue(to, out recipient))
@@ -81,6 +96,9 @@ namespace InstantMessengerServer
                         recipient.bw.Write(msg);
                         recipient.bw.Flush();
                         Console.WriteLine("[{0}] ({1} -> {2}) Message sent!", DateTime.Now, currentUser, to);
+                        if(idFrom != -1 && idTo != -1)
+                            prog.SaveMessage(idFrom, idTo, DateTime.Now, msg);
+                        
                     }
                     else
                         Console.WriteLine("client does not exist");
