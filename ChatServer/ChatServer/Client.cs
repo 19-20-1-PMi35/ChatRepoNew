@@ -29,6 +29,9 @@ namespace InstantMessengerServer
         public BinaryWriter bw;
 
         string currentUser;  // Information about current user.
+        string password;
+        string email;
+        string image;  // Information about current user.
 
         void SetupConn()  // Setup connection and login or register.
         {
@@ -41,12 +44,24 @@ namespace InstantMessengerServer
                 bw = new BinaryWriter(netStream, Encoding.UTF8);
 
                 currentUser = br.ReadString();
-                string password = br.ReadString();
+                password = br.ReadString();
+                email = br.ReadString();
+                image = br.ReadString();
 
-                prog.AddUser(currentUser, "", password, "");
 
-                prog.users.Add(currentUser, this);  // Add new user
-                Receiver();  // Listen to client in loop.
+                if (email != "")
+                {
+                    prog.AddUser(currentUser, email, password, image);
+                    prog.users.Add(currentUser, this);  // Add new user
+                    Console.WriteLine("User successfully registered!!!");
+                }
+                else
+                {
+                    prog.AddUser(currentUser, email, password, image);
+                    prog.users.Add(currentUser, this);  // Add new user
+                    Receiver();  // Listen to client in loop.
+                }
+
                 CloseConn();
             }
             catch { CloseConn(); }
