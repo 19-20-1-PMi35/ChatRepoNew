@@ -19,19 +19,58 @@ namespace ChatClientWpf
     /// </summary>
     public partial class RegistrationWindow : Window
     {
-        Client c = new Client();
+        string login;
+        string email;
+        string password;
+        string confPassword;
+        string image;
 
         public RegistrationWindow()
         {
             InitializeComponent();
+            login = "";
+            email = "";
+            password = "";
+            confPassword = "";
+            image = "";
         }
+
+        public string Login { get => login; set => login = value; }
+        public string Email { get => email; set => email = value; }
+        public string Password { get => password; set => password = value; }
+        public string Image { get => image; set => image = value; }
 
         private void RegisttrationButton_Click(object sender, RoutedEventArgs e)
         {
-            string login = LoginBox.Text;
-            string email = EmailBox.Text;
-            string password = PasswordBox.Text;
-            string image = "";
+            if (PasswordBox.Text.Length > 3)
+            {
+                if (LoginBox.Text != "" && EmailBox.Text != "")
+                {
+                    login = LoginBox.Text;
+                    email = EmailBox.Text;
+                    password = PasswordBox.Text;
+                    confPassword = PasswordBoxCheck.Text;
+                    if (password != confPassword)
+                    {
+                        MessageBox.Show("Passwords do not match");
+                        PasswordBoxCheck.Text = "";
+                    }
+                    else
+                    {
+                        Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Fill all fields");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Password is short, minimum 4 characters!!!");
+                PasswordBox.Text = "";
+                PasswordBoxCheck.Text = "";
+            }
         }
     }
 }

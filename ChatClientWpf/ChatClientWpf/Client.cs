@@ -23,6 +23,8 @@ namespace ChatClientWpf
 
         public string UserName { get; private set; }
         public string Password { get; private set; }
+        public string Email { get; private set; }
+        public string Image { get; private set; }
 
         virtual protected void OnMessageReceived(IMReceivedEventArgs e)
         {
@@ -31,13 +33,16 @@ namespace ChatClientWpf
         }
 
         // Start connection thread and login or register.
-        public void connect(string user, string password)
+        public void connect(string user, string password, string email, string image)
         {
             if (!_conn)
             {
                 _conn = true;
                 UserName = user;
                 Password = password;
+                Email = email;
+                Image = image;
+
                 tcpThread = new Thread(new ThreadStart(SetupConn));
                 tcpThread.Start();
             }
@@ -57,14 +62,6 @@ namespace ChatClientWpf
             }
         }
 
-        public void AddUser(string login, string email, string password, string image)
-        {
-            if(_conn)
-            {
-                
-            }
-        }
-
         TcpClient client;
         NetworkStream netStream;
         BinaryReader br;
@@ -81,12 +78,23 @@ namespace ChatClientWpf
 
             bw.Write(UserName);
             bw.Write(Password);
+            bw.Write(Email);
+            bw.Write(Image);
             bw.Flush();
 
-            Receiver(); // Time for listening for incoming messages.
-            if (_conn)
-                CloseConn();
+            if (Email == "")
+            {
+                Receiver(); // Time for listening for incoming messages.
+                if (_conn)
+                    CloseConn();
+            }
+            else
+            {
+                if (_conn)
+                    CloseConn();
+            }
         }
+
         public void CloseConn() // Close connection.
         {
             br.Close();
