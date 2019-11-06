@@ -19,14 +19,27 @@ namespace ChatClientWpf
     /// </summary>
     public partial class LoginWindow : Window
     {
+        string login;
+        string email;
+        string password;
+        string image;
+
         public LoginWindow()
         {
             InitializeComponent();
+            login = "";
+            email = "";
+            password = "";
+            image = "";
         }
         Client c = new Client();
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            c.connect(LoginBox.Text, PasswordBox.Text);
+            login = LoginBox.Text;
+            password = PasswordBox.Text;
+            email = "";
+            image = "";
+            c.connect(login, password, email, image);
             MainWindow mw = new MainWindow(c);
             Close();
             mw.Show();
@@ -36,6 +49,15 @@ namespace ChatClientWpf
         {
             RegistrationWindow mw = new RegistrationWindow();
             mw.ShowDialog();
+            login = LoginBox.Text = mw.Login;
+            password = PasswordBox.Text = mw.Password;
+            email = mw.Email;
+            image = mw.Image;
+            if ((bool)mw.DialogResult)
+            {
+                c.connect(login, password, email, image);
+            }
+            
         }
     }
 }
