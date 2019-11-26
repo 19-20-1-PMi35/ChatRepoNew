@@ -112,9 +112,15 @@ namespace InstantMessengerServer
                         recipient.bw.Flush();
                         Console.WriteLine("[{0}] ({1} -> {2}) Message sent!", DateTime.Now, currentUser, to);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         if (idFrom != -1 && idTo != -1)
                             prog.SaveMessage(idFrom, idTo, DateTime.Now, msg);
 
+=======
+                        if(idFrom != -1 && idTo != -1)
+                            prog.SaveMessage(idFrom, idTo, DateTime.Now, msg);
+                        
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
                         if(idFrom != -1 && idTo != -1)
                             prog.SaveMessage(idFrom, idTo, DateTime.Now, msg);

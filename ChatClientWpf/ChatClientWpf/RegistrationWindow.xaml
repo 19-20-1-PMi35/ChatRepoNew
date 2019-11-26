@@ -21,7 +21,11 @@
             </TextBlock>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             <TextBox x:Name="LoginBox" FontSize="14" Foreground="DarkCyan" HorizontalAlignment="Center" Height="28" Padding="20,1,20,0" Margin="80,0,80,20" VerticalAlignment="Center" Width="190" TextChanged="LoginBox_TextChanged" >
+=======
+            <TextBox x:Name="LoginBox" FontSize="14" Foreground="DarkCyan" HorizontalAlignment="Center" Height="28" Padding="20,1,20,0" Margin="80,0,80,20" VerticalAlignment="Center" Width="190" >
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
             <TextBox x:Name="LoginBox" FontSize="14" Foreground="DarkCyan" HorizontalAlignment="Center" Height="28" Padding="20,1,20,0" Margin="80,0,80,20" VerticalAlignment="Center" Width="190" >
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063

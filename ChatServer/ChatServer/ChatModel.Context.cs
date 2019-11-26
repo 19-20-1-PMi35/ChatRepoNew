@@ -13,6 +13,7 @@ namespace ChatServer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public partial class ChatEntities : DbContext
     {
@@ -22,6 +23,8 @@ namespace ChatServer
         }
 
 =======
+=======
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
     
     public partial class ChatEntities : DbContext
     {
@@ -30,13 +33,20 @@ namespace ChatServer
         {
         }
     
+<<<<<<< HEAD
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
+=======
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
     
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063

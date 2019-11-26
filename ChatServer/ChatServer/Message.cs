@@ -12,7 +12,11 @@ namespace ChatServer
     using System;
     using System.Collections.Generic;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
     
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
@@ -24,7 +28,11 @@ namespace ChatServer
         public Nullable<System.DateTime> Created_at { get; set; }
         public string Message1 { get; set; }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
     
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063

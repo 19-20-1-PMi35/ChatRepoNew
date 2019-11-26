@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using System.Data;
 using System.Data.SqlClient;
+=======
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 using System.Linq;
@@ -25,8 +28,11 @@ namespace ChatClientWpf
     public partial class LoginWindow : Window
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         Client c = new Client();
 
+=======
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
         string login;
@@ -42,6 +48,7 @@ namespace ChatClientWpf
             password = "";
             image = "";
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -95,6 +102,8 @@ namespace ChatClientWpf
                 //MessageBox.Show("Can't find such a person");
             }
 =======
+=======
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
         Client c = new Client();
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -106,6 +115,9 @@ namespace ChatClientWpf
             MainWindow mw = new MainWindow(c);
             Close();
             mw.Show();
+<<<<<<< HEAD
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
+=======
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
         }
 
@@ -122,12 +134,16 @@ namespace ChatClientWpf
                 c.connect(login, password, email, image);
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         }
 
         private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+=======
+            
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
             
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063

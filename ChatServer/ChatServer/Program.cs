@@ -50,7 +50,11 @@ namespace InstantMessengerServer
             {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 db.Users.Add(new User { Login = login, Email = email, Password = password, Image = image });
+=======
+                db.Users.Add(new User { Login=login, Email=email, Password=password, Image=image});
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
                 db.Users.Add(new User { Login=login, Email=email, Password=password, Image=image});
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
@@ -63,7 +67,11 @@ namespace InstantMessengerServer
             using (ChatEntities db = new ChatEntities())
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 db.Messages.Add(new Message { Id_user_from = idFrom, Id_user_to = idTo, Created_at = date, Message1 = message });
+=======
+                db.Messages.Add(new Message { Id_user_from=idFrom, Id_user_to=idTo, Created_at=date, Message1=message });
+>>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
 =======
                 db.Messages.Add(new Message { Id_user_from=idFrom, Id_user_to=idTo, Created_at=date, Message1=message });
 >>>>>>> 6ca16eb674649a1dba8c9a59a1146192217f0063
