@@ -35,14 +35,32 @@ namespace ChatClientWpf
         Client c = new Client();
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            login = LoginBox.Text;
-            password = PasswordBox.Text;
-            email = "";
-            image = "";
-            c.connect(login, password, email, image);
-            MainWindow mw = new MainWindow(c);
-            Close();
-            mw.Show();
+            if (PasswordBox.Text.Length > 3)
+            {
+                if (LoginBox.Text != "")
+                {
+                    login = LoginBox.Text;
+                    password = PasswordBox.Text;
+                    email = "";
+                    image = "";
+
+                    c.connect(login, password, email, image);
+
+                    MainWindow mw = new MainWindow(c);
+                    Close();
+                    mw.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Fill all fields");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Password is short, minimum 4 characters!!!");
+                PasswordBox.Text = "";
+            }
+
         }
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
@@ -57,7 +75,7 @@ namespace ChatClientWpf
             {
                 c.connect(login, password, email, image);
             }
-            
+
         }
     }
 }
