@@ -32,7 +32,9 @@ namespace InstantMessengerServer
         string password;
         string email;
         string image;  // Information about current user.
-
+        /// <summary>
+        /// Ініціалізація потоків передачі даних, логін або реєстрація
+        /// </summary>
         void SetupConn()  // Setup connection and login or register.
         {
             try
@@ -88,6 +90,9 @@ namespace InstantMessengerServer
                 CloseConn();
             }
         }
+        /// <summary>
+        /// Закриває потоки та видаляє користувача зі списку онлайн
+        /// </summary>
         void CloseConn() // Close connection.
         {
             try
@@ -101,6 +106,9 @@ namespace InstantMessengerServer
             }
             catch { }
         }
+        /// <summary>
+        /// Приймає повідомлення та відправляє іншому користувачу
+        /// </summary>
         void Receiver()  // Receive all incoming packets.
         {
             Console.WriteLine("[{0}] ({1}) User logged in", DateTime.Now, currentUser);

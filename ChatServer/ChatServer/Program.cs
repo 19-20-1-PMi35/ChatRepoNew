@@ -38,6 +38,9 @@ namespace InstantMessengerServer
 
             Listen();
         }
+        /// <summary>
+        /// Слухає в основному потоці всі нові підключення і якщо є нове створює екземпляр класу Client
+        /// </summary>
         void Listen()  // Listen to incoming connections.
         {
 
@@ -47,7 +50,13 @@ namespace InstantMessengerServer
                 Client client = new Client(this, tcpClient);     // Handle in another thread.
             }
         }
-
+        /// <summary>
+        /// Добавляє користувача в БД
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="image"></param>
         public void AddUser(string login, string email, string password, string image)
         {
             using (ChatEntities db = new ChatEntities())
@@ -56,7 +65,13 @@ namespace InstantMessengerServer
                 db.SaveChanges();
             }
         }
-
+        /// <summary>
+        /// Зберігає повідомлення в бд
+        /// </summary>
+        /// <param name="idFrom"></param>
+        /// <param name="idTo"></param>
+        /// <param name="date"></param>
+        /// <param name="message"></param>
         public void SaveMessage(int idFrom, int idTo, DateTime date, string message)
         {
             using (ChatEntities db = new ChatEntities())

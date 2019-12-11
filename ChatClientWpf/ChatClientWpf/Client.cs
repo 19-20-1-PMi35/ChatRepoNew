@@ -31,7 +31,13 @@ namespace ChatClientWpf
             if (MessageReceived != null)
                 MessageReceived(this, e);
         }
-
+        /// <summary>
+        /// Створює у новому потоці підключення до сервера та зберігає дані користувача
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="password"></param>
+        /// <param name="email"></param>
+        /// <param name="image"></param>
         // Start connection thread and login or register.
         public void connect(string user, string password, string email, string image)
         {
@@ -66,12 +72,13 @@ namespace ChatClientWpf
         NetworkStream netStream;
         BinaryReader br;
         BinaryWriter bw;
-
+        /// <summary>
+        /// Ініціалізує потоки та створює підключення до серверу
+        /// </summary>
         void SetupConn()  // Setup connection and login
         {
             client = new TcpClient(Server, Port);  // Connect to the server.
             netStream = client.GetStream();
-            // Now we have encrypted connection.
 
             br = new BinaryReader(netStream, Encoding.UTF8);
             bw = new BinaryWriter(netStream, Encoding.UTF8);
@@ -94,7 +101,9 @@ namespace ChatClientWpf
                     CloseConn();
             }
         }
-
+        /// <summary>
+        /// Закриває потоки та звільняє память
+        /// </summary>
         public void CloseConn() // Close connection.
         {
             br.Close();
@@ -103,6 +112,9 @@ namespace ChatClientWpf
             client.Close();
             _conn = false;
         }
+        /// <summary>
+        /// Слухає сервер
+        /// </summary>
         void Receiver()  // Receive all incoming packets.
         {
             try
@@ -119,7 +131,9 @@ namespace ChatClientWpf
         }
 
     }
-
+    /// <summary>
+    /// Клас для передачі в подію аргументів user і message
+    /// </summary>
     public class IMReceivedEventArgs : EventArgs
     {
         string user;

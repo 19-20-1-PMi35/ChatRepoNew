@@ -36,7 +36,11 @@ namespace ChatClientWpf
         {
             c.CloseConn();
         }
-
+        /// <summary>
+        /// Записує в головне вікно отримане повідомлення
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void im_MessageReceived(object sender, IMReceivedEventArgs e)
         {
             Dispatcher.Invoke(() => ListBoxMess.Items.Add(String.Format("{0}[{2}] {1}\r\n", e.From, e.Message, DateTime.Now)));
