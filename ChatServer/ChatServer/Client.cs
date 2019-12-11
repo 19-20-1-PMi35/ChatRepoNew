@@ -55,14 +55,20 @@ namespace InstantMessengerServer
                 user.Email = email;
                 user.Image = image;
 
-                List<User> to_compare = prog.all_users;
-                if (to_compare.Any(x => x.Login == currentUser))
+                List<User> lst = new List<User>();
+                using (ChatEntities db = new ChatEntities())
+                {
+                    foreach (User u in db.Users)
+                    {
+                        lst.Add(u);
+                    }
+                }
+                if (lst.Any(x => x.Login == currentUser))
                 {
                     if (password.Length > 3)
                     {
                         prog.users.Add(currentUser, this);  // Add new user
-                        prog.all_users.Add(user);  // Add new user
-
+                        lst.Add(user);  // Add new user 
                         Receiver();  // Listen to client in loop.  
                     }
                     else
@@ -72,10 +78,10 @@ namespace InstantMessengerServer
                 {
                     prog.AddUser(currentUser, email, password, image);
                     prog.users.Add(currentUser, this);  // Add new user
-                    prog.all_users.Add(user);  // Add new user
+                    lst.Add(user);  // Add new user
                     Console.WriteLine($"{currentUser} successfully registered!!!");
-                    CloseConn();
                 }
+                CloseConn();
             }
             catch
             {

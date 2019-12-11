@@ -24,49 +24,19 @@ namespace InstantMessengerServer
 
         public Dictionary<string, Client> users = new Dictionary<string, Client>();
 
-        public List<User> all_users = new List<User>();
-
         public Program()
         {
             Console.Title = "InstantMessenger Server";
             Console.WriteLine("----- InstantMessenger Server -----");
             Console.WriteLine("[{0}] Starting server...", DateTime.Now);
 
-            using (SqlConnection connection = new SqlConnection
-                (@"data source=DESKTOP-E5SILLR\SQLEXPRESS;Initial Catalog=chatdb;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;"))
-            {
-                connection.Open();
-                SqlCommand sqlCommand = new SqlCommand
-                    (@"
-                           SELECT [Id]
-                          ,[Login]
-                          ,[Password]
-                          ,[Email]
-                          ,[Image]
-                      FROM [chatdb].[dbo].[Users]", connection);
 
+            server = new TcpListener(ip, port);
+            server.Start();
 
-                using (var reader = sqlCommand.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        User user = new User();
-                        user.Id = reader.GetInt32(0);
-                        user.Login = reader.GetString(1);
-                        user.Password = reader.GetString(2);
-                        user.Email = reader.GetString(3);
-                        user.Image = reader.GetString(4);
-                        all_users.Add(user);
-                    }
-                }
+            Console.WriteLine("[{0}] Server is running properly!", DateTime.Now);
 
-                server = new TcpListener(ip, port);
-                server.Start();
-
-                Console.WriteLine("[{0}] Server is running properly!", DateTime.Now);
-
-                Listen();
-            }
+            Listen();
         }
         void Listen()  // Listen to incoming connections.
         {
