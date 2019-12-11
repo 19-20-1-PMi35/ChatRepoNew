@@ -52,17 +52,21 @@
             <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Fill="LightBlue" Width="Auto" Height="Auto"/>
             <ScrollViewer Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" VerticalScrollBarVisibility="Auto">
                 <ListBox  x:Name="ListBoxMess" x:FieldModifier="public" Width="Auto" Height="287" Background="LightGray">
-
-                    <Label Background="LightBlue" Margin="5,5,5,0 " Width="200" Height="Auto">
-                        <Label.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="8"/>
-                            </Style>
-                        </Label.Resources>
-                        <Label.Content>
-                            <TextBlock TextWrapping="Wrap">Label Text And Wrap  nfvhb hgbvh cbhfbgvhbhgfbvhgbvbfhbchvbgvbgrvhcnjrgfv</TextBlock>
-                        </Label.Content>
-                    </Label>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="ListBoxItem.Background" Value="LightSteelBlue"/>
+                            <Setter Property="Margin" Value="5,5,100,0 "/>
+                            <Setter Property="Width" Value="Auto"/>
+                            <Setter Property="Height" Value="Auto"/>
+                            <Setter Property="FontSize" Value="11"/>
+                            <Setter Property="Padding" Value="5"/>
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                </Style>
+                            </Style.Resources>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                 </ListBox>
 
             </ScrollViewer>
