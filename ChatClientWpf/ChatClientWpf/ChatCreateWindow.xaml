@@ -45,7 +45,7 @@
                     </TextBlock.RenderTransform>
                 </TextBlock>
                 <Label Foreground="DarkCyan" FontSize="14" Content="find your person" Margin="0,0,0,20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBox x:Name="SearchTermTextBox" Foreground="DarkCyan" HorizontalAlignment="Center" Height="23" Padding="20,1,20,1" Margin="80,0,80,20" VerticalAlignment="Center" Width="190" TextChanged="SearchTermTextBox_TextChanged">
+                <TextBox x:Name="SearchTermTextBox" Foreground="DarkCyan" HorizontalAlignment="Center" Height="23" Padding="20,1,20,1" Margin="80,0,80,20" VerticalAlignment="Center" Width="190">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="8"/>
@@ -66,7 +66,7 @@
                     </TextBlock.Style>
                 </TextBlock>
 
-                <Button Background="DarkCyan" Foreground="White" Content="CREATE CHAT" HorizontalAlignment="Center" VerticalAlignment="Center" Width="98" Padding="3" RenderTransformOrigin="-0.158,1.863" Margin="120,0" Click="Button_Click">
+                <Button Background="DarkCyan" Foreground="White" Content="CREATE CHAT" HorizontalAlignment="Center" VerticalAlignment="Center" Width="98" Padding="3" RenderTransformOrigin="-0.158,1.863" Margin="120,0">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="8"/>

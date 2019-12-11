@@ -59,7 +59,7 @@ namespace ChatClientWpf
         }
         private void CreateChatButton_Click(object sender, RoutedEventArgs e)
         {
-            ChatCreateWindow ccw = new ChatCreateWindow(c);
+            ChatCreateWindow ccw = new ChatCreateWindow();
             ccw.ShowDialog();
         }
 
