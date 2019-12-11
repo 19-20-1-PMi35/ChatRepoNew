@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Sockets;
 using ChatServer;
@@ -22,14 +23,17 @@ namespace InstantMessengerServer
         public TcpListener server;
 
         public Dictionary<string, Client> users = new Dictionary<string, Client>();
+
         public Program()
         {
             Console.Title = "InstantMessenger Server";
             Console.WriteLine("----- InstantMessenger Server -----");
             Console.WriteLine("[{0}] Starting server...", DateTime.Now);
 
+
             server = new TcpListener(ip, port);
             server.Start();
+
             Console.WriteLine("[{0}] Server is running properly!", DateTime.Now);
 
             Listen();
@@ -48,8 +52,7 @@ namespace InstantMessengerServer
         {
             using (ChatEntities db = new ChatEntities())
             {
-
-                db.Users.Add(new User { Login=login, Email=email, Password=password, Image=image});
+                db.Users.Add(new User { Login = login, Email = email, Password = password, Image = image });
                 db.SaveChanges();
             }
         }
@@ -58,7 +61,7 @@ namespace InstantMessengerServer
         {
             using (ChatEntities db = new ChatEntities())
             {
-                db.Messages.Add(new Message { Id_user_from=idFrom, Id_user_to=idTo, Created_at=date, Message1=message });
+                db.Messages.Add(new Message { Id_user_from = idFrom, Id_user_to = idTo, Created_at = date, Message1 = message });
                 db.SaveChanges();
             }
         }

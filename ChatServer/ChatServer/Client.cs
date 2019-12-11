@@ -43,28 +43,50 @@ namespace InstantMessengerServer
                 br = new BinaryReader(netStream, Encoding.UTF8);
                 bw = new BinaryWriter(netStream, Encoding.UTF8);
 
+                User user = new User();
+
                 currentUser = br.ReadString();
                 password = br.ReadString();
                 email = br.ReadString();
                 image = br.ReadString();
 
+                user.Login = currentUser;
+                user.Password = password;
+                user.Email = email;
+                user.Image = image;
 
-                if (email != "")
+                List<User> lst = new List<User>();
+                using (ChatEntities db = new ChatEntities())
                 {
-                    prog.AddUser(currentUser, email, password, image);
-                    prog.users.Add(currentUser, this);  // Add new user
-                    Console.WriteLine("User successfully registered!!!");
+                    foreach (User u in db.Users)
+                    {
+                        lst.Add(u);
+                    }
+                }
+                if (lst.Any(x => x.Login == currentUser))
+                {
+                    if (password.Length > 3)
+                    {
+                        prog.users.Add(currentUser, this);  // Add new user
+                        lst.Add(user);  // Add new user 
+                        Receiver();  // Listen to client in loop.  
+                    }
+                    else
+                        Console.WriteLine($"{currentUser} tried to login with login length > 3");
                 }
                 else
                 {
                     prog.AddUser(currentUser, email, password, image);
                     prog.users.Add(currentUser, this);  // Add new user
-                    Receiver();  // Listen to client in loop.
+                    lst.Add(user);  // Add new user
+                    Console.WriteLine($"{currentUser} successfully registered!!!");
                 }
-
                 CloseConn();
             }
-            catch { CloseConn(); }
+            catch
+            {
+                CloseConn();
+            }
         }
         void CloseConn() // Close connection.
         {
@@ -111,9 +133,9 @@ namespace InstantMessengerServer
                         recipient.bw.Write(msg);
                         recipient.bw.Flush();
                         Console.WriteLine("[{0}] ({1} -> {2}) Message sent!", DateTime.Now, currentUser, to);
-                        if(idFrom != -1 && idTo != -1)
+                        if (idFrom != -1 && idTo != -1)
                             prog.SaveMessage(idFrom, idTo, DateTime.Now, msg);
-                        
+
                     }
                     else
                         Console.WriteLine("client does not exist");

@@ -12,19 +12,19 @@ namespace ChatServer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class ChatEntities : DbContext
     {
-        public ChatEntities()
-            : base("name=ChatEntities")
+        public ChatEntities() : base("name=ChatEntities")
         {
+
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }

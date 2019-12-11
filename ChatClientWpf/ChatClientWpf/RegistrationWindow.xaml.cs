@@ -41,6 +41,7 @@ namespace ChatClientWpf
         public string Password { get => password; set => password = value; }
         public string Image { get => image; set => image = value; }
 
+        Client c = new Client();
         private void RegisttrationButton_Click(object sender, RoutedEventArgs e)
         {
 
