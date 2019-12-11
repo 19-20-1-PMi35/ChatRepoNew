@@ -45,9 +45,6 @@ namespace ChatClientWpf
 
                 tcpThread = new Thread(new ThreadStart(SetupConn));
                 tcpThread.Start();
-
-                //ТУТ НЕ РАБОТАЄ 
-
             }
         }
         public void Disconnect()

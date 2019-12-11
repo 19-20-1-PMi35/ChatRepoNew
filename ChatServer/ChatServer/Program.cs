@@ -33,7 +33,7 @@ namespace InstantMessengerServer
             Console.WriteLine("[{0}] Starting server...", DateTime.Now);
 
             using (SqlConnection connection = new SqlConnection
-                (@"data source=DESKTOP-NV23DLC;Initial Catalog=chatdb;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;"))
+                (@"data source=DESKTOP-E5SILLR\SQLEXPRESS;Initial Catalog=chatdb;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;"))
             {
                 connection.Open();
                 SqlCommand sqlCommand = new SqlCommand

@@ -19,9 +19,25 @@ namespace ChatClientWpf
     /// </summary>
     public partial class ChatCreateWindow : Window
     {
-        public ChatCreateWindow()
+        Client c;
+        public ChatCreateWindow(Client client)
         {
             InitializeComponent();
+            c = client;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+
+            MainWindow mainWindow = new MainWindow(c);
+            mainWindow.Show();
+            mainWindow.TextBoxSendTo.Text = SearchTermTextBox.Text;
+        }
+
+        private void SearchTermTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

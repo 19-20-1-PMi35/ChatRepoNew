@@ -39,7 +39,7 @@ namespace ChatClientWpf
 
         void im_MessageReceived(object sender, IMReceivedEventArgs e)
         {
-                Dispatcher.Invoke(() => ListBoxMess.Items.Add(String.Format("{0}[{2}] {1}\r\n", e.From, e.Message, DateTime.Now)));
+            Dispatcher.Invoke(() => ListBoxMess.Items.Add(String.Format("{0}[{2}] {1}\r\n", e.From, e.Message, DateTime.Now)));
             //    Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
             //    {
 
@@ -59,8 +59,13 @@ namespace ChatClientWpf
         }
         private void CreateChatButton_Click(object sender, RoutedEventArgs e)
         {
-            ChatCreateWindow ccw = new ChatCreateWindow();
+            ChatCreateWindow ccw = new ChatCreateWindow(c);
             ccw.ShowDialog();
+        }
+
+        private void TextBoxSendTo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
